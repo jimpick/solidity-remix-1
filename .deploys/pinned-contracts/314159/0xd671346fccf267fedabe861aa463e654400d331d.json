@@ -1,6 +1,6 @@
 {
-  "name": "MockDatacap",
-  "address": "0x816a7dedf02a0692aaaa698275816db8a65dfa15",
+  "name": "MockUSDC",
+  "address": "0xd671346fccf267fedabe861aa463e654400d331d",
   "abi": [
     {
       "inputs": [
@@ -526,6 +526,6 @@
       "type": "function"
     }
   ],
-  "filePath": "USDC-1/contracts/09_MockDatacap.sol",
-  "pinnedAt": 1746153473963
+  "filePath": "USDC-1/contracts/08_MockUSDC.sol",
+  "pinnedAt": 1746193764641
 }
