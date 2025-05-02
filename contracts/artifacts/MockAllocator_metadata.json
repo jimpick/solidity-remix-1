@@ -187,6 +187,24 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "clientAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "addVerifiedClientMock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "allocator",
 						"type": "address"
 					}
@@ -409,6 +427,14 @@
 						"clientAddress": "Filecoin address of the client"
 					}
 				},
+				"addVerifiedClientMock(address,uint256)": {
+					"custom:oz-upgrades-unsafe-allow-reachable": "delegatecall",
+					"details": "Emits DatacapAllocated eventReverts with InsufficientAllowance if caller doesn't have sufficient allowance",
+					"params": {
+						"amount": "Amount of datacap to grant",
+						"clientAddress": "Filecoin address of the client"
+					}
+				},
 				"allowance(address)": {
 					"params": {
 						"allocator": "Allocator to get allowance for"
@@ -467,6 +493,9 @@
 					"notice": "Add allowance to Allocator"
 				},
 				"addVerifiedClient(bytes,uint256)": {
+					"notice": "Grant allowance to a client."
+				},
+				"addVerifiedClientMock(address,uint256)": {
 					"notice": "Grant allowance to a client."
 				},
 				"allowance(address)": {
@@ -604,19 +633,19 @@
 			]
 		},
 		"contracts/11_MockAllocator.sol": {
-			"keccak256": "0x7ff2d290bc9996c362d97afae53897ffd9c5321e83339cd950cc9ed7dab1b8c5",
+			"keccak256": "0x1c1bbb3b3b031e91184f5a78a538487aedfc3ac29566a49937d1c46ee14b9d55",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0139ff56a397bb5c815e8cdbf0836adeb8be185633aa9044fba7961ef174baa9",
-				"dweb:/ipfs/QmY18rRyw8sFXKjTLijcQh1NMBYyaDQHu2ABYVELDVUovs"
+				"bzz-raw://5692ce84a2a159b0b6f0640104d27c3f7f8026d41bda6f3622c7de4a71cdbc92",
+				"dweb:/ipfs/QmQLDpk8gYBZq7PBu18AKUoQzexq3PYxEiS6hU8it1doUe"
 			]
 		},
-		"interfaces/IAllocator.sol": {
-			"keccak256": "0xf1097367aa14640e8616e9de4cf8be37a538fb078d12e3b9d55b7038efaf7385",
+		"interfaces/IMockAllocator.sol": {
+			"keccak256": "0xd800b2cdec7fe10a6f748f54244e2c808213848917985229c83f125bf525f5bc",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://e654ba85ddadeb596f567775ae31a68fa69a712466f417eba0b9301debd957f3",
-				"dweb:/ipfs/QmZ9r6mAVhz9icv5PpZ7BTnt6ES2ZgPKxKoNu3Dxh57hKz"
+				"bzz-raw://bf500e29b9e2d22869bba2c732901027873112f3796a33db35a940e2598cb8f2",
+				"dweb:/ipfs/QmRNRnb3pfj1co4VWA2C8Ctop6G76XfqmhF4WFP2LaB6ko"
 			]
 		},
 		"lib/filecoin-project-filecoin-solidity/contracts/v0.8/utils/FilAddressIdConverter.sol": {

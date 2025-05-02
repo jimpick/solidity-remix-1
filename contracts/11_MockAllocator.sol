@@ -3,7 +3,7 @@
 pragma solidity ^0.8.0;
 
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
-import {IAllocator} from "../interfaces/IAllocator.sol";
+import {IMockAllocator} from "../interfaces/IMockAllocator.sol";
 import {VerifRegAPI} from "../lib/filecoin-solidity/contracts/v0.8/VerifRegAPI.sol";
 import {VerifRegTypes} from "../lib/filecoin-solidity/contracts/v0.8/types/VerifRegTypes.sol";
 import {CommonTypes} from "../lib/filecoin-solidity/contracts/v0.8/types/CommonTypes.sol";
@@ -21,7 +21,7 @@ import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
  * allowance on the contract, assigned by contract owner.
  * @dev Contract is upgradeable via UUPS by contract owner.
  */
-contract MockAllocator is Ownable, IAllocator {
+contract MockAllocator is Ownable, IMockAllocator {
     using EnumerableMap for EnumerableMap.AddressToUintMap;
 
     /**
@@ -116,6 +116,42 @@ contract MockAllocator is Ownable, IAllocator {
         address addr = FilAddressIdConverter.toAddress(actorID);
         IERC20 mockDatacapContract = IERC20(mockDatacap);
         mockDatacapContract.transfer(addr, amount);
+    }
+
+   /**
+     * @notice Grant allowance to a client.
+     * @param clientAddress Filecoin address of the client
+     * @param amount Amount of datacap to grant
+     * @dev Emits DatacapAllocated event
+     * @dev Reverts with InsufficientAllowance if caller doesn't have sufficient allowance
+     * @custom:oz-upgrades-unsafe-allow-reachable delegatecall
+     */
+    function addVerifiedClientMock(address clientAddress, uint256 amount) external {
+        if (amount == 0) revert AmountEqualZero();
+        uint256 allocatorBalance = allowance(msg.sender);
+        if (allocatorBalance < amount) revert InsufficientAllowance();
+        if (allocatorBalance - amount == 0) {
+            _allocators.remove(msg.sender);
+        } else {
+            _allocators.set(msg.sender, allocatorBalance - amount);
+        }
+        // emit DatacapAllocated(msg.sender, clientAddress, amount);
+        /*
+        VerifRegTypes.AddVerifiedClientParams memory params = VerifRegTypes.AddVerifiedClientParams({
+            addr: FilAddresses.fromBytes(clientAddress),
+            allowance: CommonTypes.BigInt(abi.encodePacked(amount), false)
+        });
+        VerifRegAPI.addVerifiedClient(params);
+        */
+
+        // Use mock datacap instead of system actor for demo
+        /*
+        CommonTypes.FilAddress memory filecoinAddr = FilAddresses.fromBytes(clientAddress);
+        uint64 actorID = PrecompilesAPI.resolveAddress(filecoinAddr);
+        address addr = FilAddressIdConverter.toAddress(actorID);
+        */
+        IERC20 mockDatacapContract = IERC20(mockDatacap);
+        mockDatacapContract.transfer(clientAddress, amount);
     }
 
     /**

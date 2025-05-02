@@ -9,12 +9,63 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "initialOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
 						"name": "_usdcContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_mockAllocator",
 						"type": "address"
 					}
 				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "OwnableInvalidOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "OwnableUnauthorizedAccount",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
 			},
 			{
 				"inputs": [],
@@ -49,6 +100,39 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "mockAllocator",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -64,9 +148,19 @@
 						"internalType": "uint256",
 						"name": "value",
 						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "clientFilecoinAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
 					}
 				],
-				"name": "transferFrom",
+				"name": "transferFromAndGrantDatacap",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -74,6 +168,19 @@
 						"type": "bool"
 					}
 				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
@@ -92,10 +199,31 @@
 			}
 		],
 		"devdoc": {
+			"errors": {
+				"OwnableInvalidOwner(address)": [
+					{
+						"details": "The owner is not a valid owner account. (eg. `address(0)`)"
+					}
+				],
+				"OwnableUnauthorizedAccount(address)": [
+					{
+						"details": "The caller account is not authorized to perform an operation."
+					}
+				]
+			},
 			"kind": "dev",
 			"methods": {
-				"transferFrom(address,address,uint256)": {
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+				},
+				"transferFromAndGrantDatacap(address,address,uint256,address,uint256)": {
 					"details": "Moves a `value` amount of tokens from `from` to `to` using the allowance mechanism. `value` is then deducted from the caller's allowance. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
 				}
 			},
 			"version": 1
@@ -108,7 +236,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/10_TransferController.sol": "TransferController"
+			"contracts/12_TransferControllerDirect.sol": "TransferController"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -122,6 +250,14 @@
 		"remappings": []
 	},
 	"sources": {
+		"@openzeppelin/contracts/access/Ownable.sol": {
+			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
+				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
+			]
+		},
 		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
 			"keccak256": "0xe06a3f08a987af6ad2e1c1e774405d4fe08f1694b67517438b467cecf0da0ef7",
 			"license": "MIT",
@@ -130,12 +266,28 @@
 				"dweb:/ipfs/QmeTTxZ7qVk9rjEv2R4CpCwdf8UMCcRqDNMvzNxHc3Fnn9"
 			]
 		},
-		"contracts/10_TransferController.sol": {
-			"keccak256": "0xd2cb8cb35afe444e16d5df9d31077f09f1b65ba81303fc474f6ce0cb7371c8ee",
+		"@openzeppelin/contracts/utils/Context.sol": {
+			"keccak256": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c9d24790f9c805f4de41f50866e06eec88a1680cd2bee99cec76e0bdc4c66820",
-				"dweb:/ipfs/QmfZ7kbHzeyS46KUiZ65D2QKrxoQHCFw4urZKu2c2vR1BE"
+				"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
+				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
+			]
+		},
+		"contracts/12_TransferControllerDirect.sol": {
+			"keccak256": "0x9e21737e38dfcb123d24c311a69b01378d084a415f3b2f24a4816ed7a190ac96",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ff3f9734ce75a7b95903d361be71c219464440e5b803ea10434d0f268621f0c0",
+				"dweb:/ipfs/QmXZ5nYLaab8ryFEmcbpiUzkNobr4c2xMbQJwdeEgkKbyc"
+			]
+		},
+		"interfaces/IMockAllocator.sol": {
+			"keccak256": "0xd800b2cdec7fe10a6f748f54244e2c808213848917985229c83f125bf525f5bc",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://bf500e29b9e2d22869bba2c732901027873112f3796a33db35a940e2598cb8f2",
+				"dweb:/ipfs/QmRNRnb3pfj1co4VWA2C8Ctop6G76XfqmhF4WFP2LaB6ko"
 			]
 		}
 	},

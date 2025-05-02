@@ -677,7 +677,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/9_MockDatacap.sol": "MockUSDC"
+			"contracts/08_MockUSDC.sol": "MockUSDC"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -843,12 +843,12 @@
 				"dweb:/ipfs/QmVUSvooZKEdEdap619tcJjTLcAuH6QBdZqAzWwnAXZAWJ"
 			]
 		},
-		"contracts/9_MockDatacap.sol": {
-			"keccak256": "0x28714ef4e1e8e56ae57f8b347d2b0cb48dbf0cf4f10fd0fddba23c4668e0d466",
+		"contracts/08_MockUSDC.sol": {
+			"keccak256": "0xc503331ccd44b88f21f3e872c65e985c55214c86d9d3f1f812c91d27b7075ffa",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://74b3c067457a0004e8adc9313e9fef1486a261a2a29621439081a4a6ac1238ad",
-				"dweb:/ipfs/QmTfa2RZT7W1HDFBT58LcquePRDcF22ALKkgooeyc1nXGR"
+				"bzz-raw://2f35ad3aee55831eb718fb1f4f608a9737a402d0c401b1319afad5d3725a61e4",
+				"dweb:/ipfs/QmS594hfXpqkPLZSMkd3PCi9reCigzR8UEZ5KJG3nvGdgF"
 			]
 		}
 	},
