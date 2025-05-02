@@ -6,25 +6,15 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
 				"inputs": [
 					{
-						"internalType": "int256",
-						"name": "errorCode",
-						"type": "int256"
+						"internalType": "address",
+						"name": "_mockDatacapAddress",
+						"type": "address"
 					}
 				],
-				"name": "ActorError",
-				"type": "error"
-			},
-			{
-				"inputs": [],
-				"name": "ActorNotFound",
-				"type": "error"
+				"stateMutability": "nonpayable",
+				"type": "constructor"
 			},
 			{
 				"inputs": [
@@ -94,40 +84,8 @@
 				"type": "error"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint64",
-						"name": "",
-						"type": "uint64"
-					}
-				],
-				"name": "InvalidCodec",
-				"type": "error"
-			},
-			{
 				"inputs": [],
 				"name": "InvalidInitialization",
-				"type": "error"
-			},
-			{
-				"inputs": [],
-				"name": "InvalidResponseLength",
-				"type": "error"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "balance",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "value",
-						"type": "uint256"
-					}
-				],
-				"name": "NotEnoughBalance",
 				"type": "error"
 			},
 			{
@@ -386,6 +344,19 @@
 				"name": "initialize",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "mockDatacap",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -658,34 +629,9 @@
 		},
 		"userdoc": {
 			"errors": {
-				"ActorError(int256)": [
-					{
-						"notice": "the called actor returned an error as part of its expected behaviour"
-					}
-				],
-				"ActorNotFound()": [
-					{
-						"notice": "the actor is not found"
-					}
-				],
 				"FailToCallActor()": [
 					{
 						"notice": "an error happened trying to call the actor"
-					}
-				],
-				"InvalidCodec(uint64)": [
-					{
-						"notice": "the codec received is not valid"
-					}
-				],
-				"InvalidResponseLength()": [
-					{
-						"notice": "the response received is not correct. In some case no response is expected and we received one, or a response was indeed expected and we received none."
-					}
-				],
-				"NotEnoughBalance(uint256,uint256)": [
-					{
-						"notice": "the smart contract has no enough balance to transfer"
 					}
 				]
 			},
@@ -724,7 +670,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/7_Allocator.sol": "Allocator"
+			"contracts/11_MockAllocator.sol": "Allocator"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -818,6 +764,14 @@
 				"dweb:/ipfs/QmWRMh4Q9DpaU9GvsiXmDdoNYMyyece9if7hnfLz7uqzWM"
 			]
 		},
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0xe06a3f08a987af6ad2e1c1e774405d4fe08f1694b67517438b467cecf0da0ef7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://df6f0c459663c9858b6cba2cda1d14a7d05a985bed6d2de72bd8e78c25ee79db",
+				"dweb:/ipfs/QmeTTxZ7qVk9rjEv2R4CpCwdf8UMCcRqDNMvzNxHc3Fnn9"
+			]
+		},
 		"@openzeppelin/contracts/utils/Address.sol": {
 			"keccak256": "0xaaa1d17c1129b127a4a401db2fbd72960e2671474be3d08cae71ccdc42f7624c",
 			"license": "MIT",
@@ -906,12 +860,12 @@
 				"dweb:/ipfs/QmejkwADsZRxkusNU94sswMJfpLrbq8RkJTbNccUEQpc7Y"
 			]
 		},
-		"contracts/7_Allocator.sol": {
-			"keccak256": "0xc93deaf931236fa50e8430881f16d8b90b1d356c5df34a986d29667c1d4d88d9",
+		"contracts/11_MockAllocator.sol": {
+			"keccak256": "0x682cc2505bef559deb8df40657959df2132ba6a8725c2cdfe426b5412984a4f7",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://37fd24b83cede0f7a0b56cbc02ae002df4f581c55fe03deb1cea5ce9423067d0",
-				"dweb:/ipfs/QmW1fE3EBrdbB4Lg4qYZMqq4newxCz52f8GdtRcYfhzzRL"
+				"bzz-raw://9ce36e0c1571fd0d5d9f589a7732ec47e2bd7588f24fdf525fd8a5d2bd41ff1b",
+				"dweb:/ipfs/QmXBuxTzkMgbd2hQZHAwVsWekQZqp4wJTKm99WzYPEfgu9"
 			]
 		},
 		"interfaces/IAllocator.sol": {
@@ -920,6 +874,22 @@
 			"urls": [
 				"bzz-raw://e654ba85ddadeb596f567775ae31a68fa69a712466f417eba0b9301debd957f3",
 				"dweb:/ipfs/QmZ9r6mAVhz9icv5PpZ7BTnt6ES2ZgPKxKoNu3Dxh57hKz"
+			]
+		},
+		"lib/filecoin-project-filecoin-solidity/contracts/v0.8/utils/FilAddressIdConverter.sol": {
+			"keccak256": "0xd38664dae8fb6381d612e7787b6f7ace183b985927df5e45b7f119a049f2c1b5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://eeaa8fab7052b4c43de60fdd4e0283f437bde5d4658d92105475e479c6359198",
+				"dweb:/ipfs/QmQxoKofbZhJBRrBPAFKpXD9DbrenA4g3QGb2k7452MjRg"
+			]
+		},
+		"lib/filecoin-solidity/contracts/v0.8/PrecompilesAPI.sol": {
+			"keccak256": "0xaf2d09961a638c9287b6e68b242670e3ce9b2d2f58e56e36d1f67200905e5b34",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://387e62c233a1ef2e21b4f13bed20803ce5a2eb1de57853dc58160d19ff25c77d",
+				"dweb:/ipfs/QmNZTQ2ehCd5so7aSUbQuLm5NcB3diYWc1tEyprGA3Cqa3"
 			]
 		},
 		"lib/filecoin-solidity/contracts/v0.8/Utils.sol": {
