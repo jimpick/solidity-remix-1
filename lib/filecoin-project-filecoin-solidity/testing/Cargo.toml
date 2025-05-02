@@ -1,0 +1,46 @@
+[package]
+name = "testing"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+fvm = "4.0.0"
+fvm_ipld_blockstore = "0.2.0" 
+fvm_integration_tests = "4.0.0"
+fvm_ipld_encoding = "0.4.0" 
+fvm_shared = "4.0.0"
+actors-v12 = { package = "fil_builtin_actors_bundle", git = "https://github.com/filecoin-project/builtin-actors", tag = "v12.0.0" }
+
+hex = "0.4.3"
+anyhow = "1.0.47"
+prettytable-rs = "0.10"
+multihash = { version = "0.18.1", default-features = false }
+
+
+serde = { version = "1.0.193", features = ["derive"] }
+bls-signatures = { version = "0.15", default-features = false }
+libipld-core = { version = "0.16.0", features = ["serde-codec"] }
+rand_core = "0.6.4"
+cid = { version = "0.10.1", default-features = false }
+
+fvm_actor_utils = { version = "9.0.0" }
+frc46_token = { version = "9.0.0" }
+frc42_dispatch = { version = "5.0.0" }
+
+fil_actors_runtime = { git = "https://github.com/filecoin-project/builtin-actors", tag = "v12.0.0" }
+fil_actor_eam = { git = "https://github.com/filecoin-project/builtin-actors", tag = "v12.0.0" }
+fil_actor_datacap = { git = "https://github.com/filecoin-project/builtin-actors", tag = "v12.0.0"  }
+fil_actor_init = { git = "https://github.com/filecoin-project/builtin-actors", tag = "v12.0.0"  }
+fil_actor_miner = { git = "https://github.com/filecoin-project/builtin-actors", tag = "v12.0.0"  }
+fil_actor_evm = { git = "https://github.com/filecoin-project/builtin-actors", tag = "v12.0.0"  }
+
+alloy-sol-types = "0.4.2"
+alloy-primitives = "0.4.2"
+alloy-json-abi = "0.4.2"
+alloy-dyn-abi = "0.4.2"
+alloy-sol-macro = { version = "0.4.2", features = ["json"] }
+serde_json = { version = "1.0", default-features = false, features = ["alloc"] }
+
+cbor-data = "0.8.15"

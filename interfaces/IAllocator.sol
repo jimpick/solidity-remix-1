@@ -51,14 +51,14 @@ interface IAllocator {
      * @notice Get all allocators with non-zero allowance
      * @return allocators List of allocators with non-zero allowance
      */
-    // function getAllocators() external view returns (address[] memory allocators);
+    function getAllocators() external view returns (address[] memory allocators);
 
     /**
      * @notice Get allowance of an allocator
      * @param allocator Allocator to get allowance for
      * @return allowance Allocator's allowance
      */
-    // function allowance(address allocator) external view returns (uint256 allowance);
+    function allowance(address allocator) external view returns (uint256 allowance);
 
     /**
      * @notice Add allowance to Allocator
@@ -68,7 +68,7 @@ interface IAllocator {
      * @dev Reverts if not called by contract owner
      * @dev Reverts if trying to add 0 allowance
      */
-    // function addAllowance(address allocator, uint256 amount) external;
+    function addAllowance(address allocator, uint256 amount) external;
 
     /**
      * @notice Set allowance of an Allocator. Can be used to remove allowance.
@@ -78,7 +78,7 @@ interface IAllocator {
      * @dev Reverts if not called by contract owner
      * @dev Reverts if setting to 0 when allocator already has 0 allowance
      */
-    // function setAllowance(address allocator, uint256 amount) external;
+    function setAllowance(address allocator, uint256 amount) external;
 
     /**
      * @notice Grant allowance to a client.

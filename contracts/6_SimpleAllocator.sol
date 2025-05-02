@@ -5,16 +5,18 @@ pragma solidity ^0.8.0;
 
 import {Ownable2StepUpgradeable} from "@openzeppelin/contracts-upgradeable/access/Ownable2StepUpgradeable.sol";
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {IAllocator} from "../interfaces/IAllocator.sol";
+import {ISimpleAllocator} from "../interfaces/ISimpleAllocator.sol";
 import {VerifRegAPI} from "../lib/filecoin-solidity/contracts/v0.8/VerifRegAPI.sol";
 import {VerifRegTypes} from "../lib/filecoin-solidity/contracts/v0.8/types/VerifRegTypes.sol";
 import {DataCapAPI} from "../lib/filecoin-solidity/contracts/v0.8/DataCapAPI.sol";
 import {CommonTypes} from "../lib/filecoin-solidity/contracts/v0.8/types/CommonTypes.sol";
+import {FilAddressIdConverter} from "../lib/filecoin-project-filecoin-solidity/contracts/v0.8/utils/FilAddressIdConverter.sol";
 import {FilAddresses} from "../lib/filecoin-solidity/contracts/v0.8/utils/FilAddresses.sol";
-import {BigInts} from "../lib/filecoin-solidity/contracts/v0.8/utils/BigInts.sol";
+// import {BigInts} from "../lib/filecoin-solidity/contracts/v0.8/utils/BigInts.sol";
+import {PrecompilesAPI} from "../lib/filecoin-solidity/contracts/v0.8/PrecompilesAPI.sol";
 import {EnumerableMap} from "@openzeppelin/contracts/utils/structs/EnumerableMap.sol";
 
-contract SimpleAllocator is Initializable, Ownable2StepUpgradeable, IAllocator {
+contract SimpleAllocator is Initializable, Ownable2StepUpgradeable, ISimpleAllocator {
     using EnumerableMap for EnumerableMap.AddressToUintMap;
 
     /**
@@ -56,6 +58,7 @@ contract SimpleAllocator is Initializable, Ownable2StepUpgradeable, IAllocator {
     // 0x2c5211c6
     error InvalidAmount();
 
+   /*
    function balanceFromActorID(uint64 actorID) public {
         CommonTypes.FilAddress memory addr = FilAddresses.fromActorID(actorID);
         CommonTypes.BigInt memory result = DataCapAPI.balance(addr);
@@ -64,6 +67,7 @@ contract SimpleAllocator is Initializable, Ownable2StepUpgradeable, IAllocator {
         if (failed) revert InvalidAmount();
         emit Balance(bal);
     }
+    */
 
     function senderAddr() public view returns (address addr) {
         addr = msg.sender;
@@ -123,6 +127,63 @@ contract SimpleAllocator is Initializable, Ownable2StepUpgradeable, IAllocator {
             allowance: CommonTypes.BigInt(abi.encodePacked(amount), false)
         });
         VerifRegAPI.addVerifiedClient(params);
+    }
+
+    function getAddrBytesFromActorID(uint64 actorID) public pure returns (bytes memory){
+        CommonTypes.FilAddress memory addr = FilAddresses.fromActorID(actorID);
+        return addr.data;
+    }
+
+    function getEthAddrFromActorID(uint64 actorID) public view returns (address){
+        // CommonTypes.FilAddress memory filecoinAddr = FilAddresses.fromActorID(actorID);
+        address addr = FilAddressIdConverter.toAddress(actorID);
+        return addr;
+        // return toEthAddress(filecoinAddr);
+    }
+
+    function getEthAddrFromBytes(bytes calldata clientAddress) public view returns (address){
+        CommonTypes.FilAddress memory filecoinAddr = FilAddresses.fromBytes(clientAddress);
+        uint64 actorID = PrecompilesAPI.resolveAddress(filecoinAddr);
+        address addr = FilAddressIdConverter.toAddress(actorID);
+        return addr;
+    }
+
+    /// @dev Protocol byte values
+    /// @notice These constants represent the byte value for each protocol.
+    ///         For more information see the Filecoin documentation: 
+    ///         https://docs.filecoin.io/smart-contracts/filecoin-evm-runtime/address-types
+    bytes1 constant PROTOCOL_DELEGATED = hex"04";
+ 
+    /// @dev EAM actor ID
+    /// @notice This constant represents the EAM actor ID.
+    bytes1 constant EAM_ID = hex"0a";
+
+    /// @dev Protocols address lengths
+    /// @notice These constants represent the address lengths for each protocol.
+    ///         For more information see the Filecoin specification: 
+    ///         https://spec.filecoin.io/#section-appendix
+    uint256 constant PROTOCOL_DELEGATED_EAM_ADDRESS_LENGTH = 22;
+
+    error InvalidAddress();
+
+    /// @notice allow to get a eth address from 040a type FilAddress made above
+    /// @param addr FilAddress to convert
+    /// @return new eth address
+    function toEthAddress(CommonTypes.FilAddress memory addr) internal pure returns (address) {
+        if (
+            addr.data[0] != PROTOCOL_DELEGATED || addr.data[1] != EAM_ID
+                || addr.data.length != PROTOCOL_DELEGATED_EAM_ADDRESS_LENGTH
+        ) {
+            revert InvalidAddress();
+        }
+        bytes memory filAddress = addr.data;
+        bytes20 ethAddress;
+
+        assembly {
+            ethAddress := mload(add(filAddress, 0x22))
+        }
+
+        return address(ethAddress);
     }
 
 }
