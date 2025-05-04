@@ -8,6 +8,22 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "initialOwner",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "DatacapGatewayUnset",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "bytes32",
 						"name": "key",
 						"type": "bytes32"
@@ -17,10 +33,64 @@
 				"type": "error"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "OwnableInvalidOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "OwnableUnauthorizedAccount",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
 				"inputs": [],
 				"name": "createStorageProviderEscrow",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "datacapGatewayAddr",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -56,6 +126,25 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "escrowContract",
+						"type": "address"
+					}
+				],
+				"name": "isEscrow",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "nextId",
 				"outputs": [
@@ -67,6 +156,52 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "datacapGatewayAddress",
+						"type": "address"
+					}
+				],
+				"name": "setDatacapGateway",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -75,10 +210,30 @@
 					{
 						"details": "Query for a nonexistent map key."
 					}
+				],
+				"OwnableInvalidOwner(address)": [
+					{
+						"details": "The owner is not a valid owner account. (eg. `address(0)`)"
+					}
+				],
+				"OwnableUnauthorizedAccount(address)": [
+					{
+						"details": "The caller account is not authorized to perform an operation."
+					}
 				]
 			},
 			"kind": "dev",
-			"methods": {},
+			"methods": {
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
 			"version": 1
 		},
 		"userdoc": {
@@ -192,19 +347,35 @@
 			]
 		},
 		"contracts/13_StorageProviderEscrow.sol": {
-			"keccak256": "0xceeccbb38bc8a116ce65d357d24669c15e4e3172f680b8ca42453f611ae5f3db",
+			"keccak256": "0x3de566c439626eafc257bfc30fa1ad923bb791aeed2f2728d05644e5185e642f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b8a78a56f9305f0d50229eb0ce206673811f54c9ad07f94d4fa03168135ba9a0",
-				"dweb:/ipfs/QmevSQwAaQKdPMpCKc94FEzgkuWKrE9fjMibDS68oDa1d2"
+				"bzz-raw://e343efb7e2e649ebcba62d44a0b9773a0b3132146b58e84c345c4b6c9e8bdd98",
+				"dweb:/ipfs/QmRPEhq8Qguy9sHLfEYf5B61z2fb4SDb3X7PEBKG9m3c9T"
 			]
 		},
 		"contracts/14_StorageProviderEscrowFactory.sol": {
-			"keccak256": "0xbf2ad230b3d04f6e348e3493cbe87dc1994ede7864ceeb753940634f7eaed1a5",
+			"keccak256": "0x308cf0bebe9e4c359545ae68b653b4b5e6c241abd9bb6e33c896fe39d47ac473",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://580e085263eb4eb723e00b122ae7f3f015a7965ad838bd444e3c6a19c187ef11",
-				"dweb:/ipfs/Qmag3ZwuwtBdy2Q3geRnHgM98ZGG7oBUoWpW8EXQkTcU6M"
+				"bzz-raw://c8a9eb1fcab50b4fe14e069b0cfdf898fdb0cbda1e1329b1f1cecfbfe94e2675",
+				"dweb:/ipfs/QmcPhwHaanuB7P9VFH1wRLEghiscpQoAfXbxq4hnUCQTbF"
+			]
+		},
+		"interfaces/IDatacapGateway.sol": {
+			"keccak256": "0xa6e358f3e8bb00c39b46e0c01208f3e9812af17e24a8b0cb52da12641704209e",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://0fae3f128c533d7c25d1fad3a5449e16c1e3fabce188219c7a94ef9790e19be1",
+				"dweb:/ipfs/QmU7nc5MdyRPVdBZcjoXf6iVm8Hvs9bMkdcF2fgPrS3ic8"
+			]
+		},
+		"interfaces/IStorageProviderEscrowFactory.sol": {
+			"keccak256": "0x370df260194943550278617734ba1b17f4f09e996388960990a52c0c9bb9cb1d",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://746b1e958db3aca7edfd0746f8cac5c638ac3e83495ddaf73ed139abee0201b6",
+				"dweb:/ipfs/QmbzeWf5JWqkWHVYzrACNHJwq4joCfe73EMnm6zV8KnyDF"
 			]
 		}
 	},
