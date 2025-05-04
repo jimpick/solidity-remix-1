@@ -16,10 +16,30 @@ contract StorageProviderEscrow is Ownable {
 
     uint256 public remainingDatacap;
 
+    address public storageProviderAddr;
+
     constructor(address initialOwner, address usdcAddress, address datacapGatewayAddress, uint256 newId) Ownable(initialOwner) {
-        id = newId;
         usdcAddr = usdcAddress;
         datacapGatewayAddr = datacapGatewayAddress;
+        id = newId;
+    }
+
+    function setStorageProviderAddr(address storageProviderAddress) external onlyOwner {
+        storageProviderAddr = storageProviderAddress;
+    }
+
+    error StorageProviderAddressUnset();
+
+    error UnauthorizedAccount(address account);
+
+    modifier onlySPOrOwner() {
+        if (storageProviderAddr == address(0)) {
+            revert StorageProviderAddressUnset();
+        }
+        if (msg.sender != storageProviderAddr && msg.sender != owner()) {
+            revert UnauthorizedAccount(msg.sender);
+        }
+        _;
     }
 
     function hasDatacapGatewayAccess() external view returns (bool) {
@@ -39,8 +59,7 @@ contract StorageProviderEscrow is Ownable {
 
     event DatacapGranted(bytes indexed client, uint256 amount);
 
-    // FIXME: SP access only
-    function grantDatacap(bytes calldata clientFilecoinAddress, uint256 amount) external {
+    function grantDatacap(bytes calldata clientFilecoinAddress, uint256 amount) external onlySPOrOwner {
         if (remainingDatacap < amount) {
             revert InsufficientDatacap();
         }
@@ -52,8 +71,7 @@ contract StorageProviderEscrow is Ownable {
 
     event DatacapGrantedMock(address indexed client, uint256 amount);
 
-    // FIXME: SP access only
-    function grantDatacapMock(address clientFilecoinAddress, uint256 amount) external {
+    function grantDatacapMock(address clientFilecoinAddress, uint256 amount) external onlySPOrOwner {
          if (remainingDatacap < amount) {
             revert InsufficientDatacap();
         }
@@ -71,8 +89,7 @@ contract StorageProviderEscrow is Ownable {
      *
      * Emits a {Transfer} event.
      */
-    // FIXME: SP access only
-    function transfer(address to, uint256 value) external returns (bool) {
+    function transfer(address to, uint256 value) external onlySPOrOwner returns (bool) {
         IERC20 usdc = IERC20(usdcAddr);
         return usdc.transfer(to, value);
     } 
@@ -92,8 +109,7 @@ contract StorageProviderEscrow is Ownable {
      *
      * Emits an {Approval} event.
      */
-    // FIXME: SP access only
-    function approve(address spender, uint256 value) external returns (bool) {
+    function approve(address spender, uint256 value) external onlySPOrOwner returns (bool) {
         IERC20 usdc = IERC20(usdcAddr);
         return usdc.approve(spender, value);
     }

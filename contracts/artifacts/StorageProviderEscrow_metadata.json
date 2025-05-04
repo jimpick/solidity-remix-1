@@ -59,6 +59,22 @@
 				"type": "error"
 			},
 			{
+				"inputs": [],
+				"name": "StorageProviderAddressUnset",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "UnauthorizedAccount",
+				"type": "error"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -277,6 +293,32 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "storageProviderAddress",
+						"type": "address"
+					}
+				],
+				"name": "setStorageProviderAddr",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "storageProviderAddr",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "to",
 						"type": "address"
 					},
@@ -404,11 +446,11 @@
 			]
 		},
 		"contracts/13_StorageProviderEscrow.sol": {
-			"keccak256": "0xd24414d93baf066e104711618fbb03eccce25c7a9065ea7abc7b236c6c82d80e",
+			"keccak256": "0xef7f6600b7a31fed594ef3ea9510db89633f8751c05cfc5fabc10228968107ef",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e38bc9a2ae84102d96f790ede85ff9f3e9ef519d00fbf05ac5c02b07921d8219",
-				"dweb:/ipfs/QmWfS6okHgUZxehzMsiZz855VkpTfqjVBVqsi5iJieWVyW"
+				"bzz-raw://109cdcd4134231ed8a442ac43a93ce0061d7e3524fba7c8933ef1e9ce17cb3b0",
+				"dweb:/ipfs/QmdYWgS6KcV6NpWGJA4vdijkCBR24KbWGhkcW4i87qGnQN"
 			]
 		},
 		"contracts/interfaces/IDatacapGateway.sol": {
