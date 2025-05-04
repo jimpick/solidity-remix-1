@@ -633,14 +633,14 @@
 			]
 		},
 		"contracts/11_MockAllocator.sol": {
-			"keccak256": "0x1c1bbb3b3b031e91184f5a78a538487aedfc3ac29566a49937d1c46ee14b9d55",
+			"keccak256": "0xa291a4b70fe625d9b33483768ae56d55a3f3487a869cc179be494c0b285ea8d5",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5692ce84a2a159b0b6f0640104d27c3f7f8026d41bda6f3622c7de4a71cdbc92",
-				"dweb:/ipfs/QmQLDpk8gYBZq7PBu18AKUoQzexq3PYxEiS6hU8it1doUe"
+				"bzz-raw://dd649f64d84d44f3929bb5cb015e2b82c24a7850d9061635fc4682d22e889d82",
+				"dweb:/ipfs/QmV7jQmVSLdBG5Tn8GRSgD1LQdRsVL2Ax2ZkkGTNtNTDtP"
 			]
 		},
-		"interfaces/IMockAllocator.sol": {
+		"contracts/interfaces/IMockAllocator.sol": {
 			"keccak256": "0xd800b2cdec7fe10a6f748f54244e2c808213848917985229c83f125bf525f5bc",
 			"license": "UNLICENSED",
 			"urls": [

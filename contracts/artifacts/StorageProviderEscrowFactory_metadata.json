@@ -373,11 +373,11 @@
 			]
 		},
 		"contracts/13_StorageProviderEscrow.sol": {
-			"keccak256": "0xee0bd336114f2ffb55df77e82f4c8c625f7a2e20f5f259f17a297b4033889afa",
+			"keccak256": "0xef7f6600b7a31fed594ef3ea9510db89633f8751c05cfc5fabc10228968107ef",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://34fcea6645de990cb0bb8bf93c6f8730a41d4acead97150263d6d2d5d9bab8b0",
-				"dweb:/ipfs/QmZvZpFZJV7YPMY1aCYbii5eegxVPbs3zfiK5RM92RaLJn"
+				"bzz-raw://109cdcd4134231ed8a442ac43a93ce0061d7e3524fba7c8933ef1e9ce17cb3b0",
+				"dweb:/ipfs/QmdYWgS6KcV6NpWGJA4vdijkCBR24KbWGhkcW4i87qGnQN"
 			]
 		},
 		"contracts/14_StorageProviderEscrowFactory.sol": {
