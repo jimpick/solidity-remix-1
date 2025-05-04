@@ -6,7 +6,7 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {EnumerableMap} from "@openzeppelin/contracts/utils/structs/EnumerableMap.sol";
 import {EnumerableSet} from "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 
-import {IStorageProviderEscrowFactory} from "../interfaces/IStorageProviderEscrowFactory.sol";
+import {IStorageProviderEscrowFactory} from "./interfaces/IStorageProviderEscrowFactory.sol";
 
 import {StorageProviderEscrow} from "./13_StorageProviderEscrow.sol";
 

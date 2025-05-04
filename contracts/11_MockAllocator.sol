@@ -3,7 +3,7 @@
 pragma solidity ^0.8.0;
 
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
-import {IMockAllocator} from "../interfaces/IMockAllocator.sol";
+import {IMockAllocator} from "./interfaces/IMockAllocator.sol";
 import {VerifRegAPI} from "../lib/filecoin-solidity/contracts/v0.8/VerifRegAPI.sol";
 import {VerifRegTypes} from "../lib/filecoin-solidity/contracts/v0.8/types/VerifRegTypes.sol";
 import {CommonTypes} from "../lib/filecoin-solidity/contracts/v0.8/types/CommonTypes.sol";

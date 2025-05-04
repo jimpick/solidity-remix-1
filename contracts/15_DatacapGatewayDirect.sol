@@ -4,9 +4,9 @@ pragma solidity ^0.8.0;
 
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-import {IMockAllocator} from "../interfaces/IMockAllocator.sol";
-import {IStorageProviderEscrowFactory} from "../interfaces/IStorageProviderEscrowFactory.sol";
-import {IDatacapGateway} from "../interfaces/IDatacapGateway.sol";
+import {IMockAllocator} from "./interfaces/IMockAllocator.sol";
+import {IStorageProviderEscrowFactory} from "./interfaces/IStorageProviderEscrowFactory.sol";
+import {IDatacapGateway} from "./interfaces/IDatacapGateway.sol";
 
 contract DatacapGatewayDirect is Ownable, IDatacapGateway {
     address public mockAllocator;

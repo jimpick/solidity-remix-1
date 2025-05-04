@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import {Ownable2StepUpgradeable} from "@openzeppelin/contracts-upgradeable/access/Ownable2StepUpgradeable.sol";
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
-import {IAllocator} from "../interfaces/IAllocator.sol";
+import {IAllocator} from "./interfaces/IAllocator.sol";
 import {VerifRegAPI} from "../lib/filecoin-solidity/contracts/v0.8/VerifRegAPI.sol";
 import {VerifRegTypes} from "../lib/filecoin-solidity/contracts/v0.8/types/VerifRegTypes.sol";
 import {CommonTypes} from "../lib/filecoin-solidity/contracts/v0.8/types/CommonTypes.sol";

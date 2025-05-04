@@ -27,6 +27,11 @@
 				"type": "constructor"
 			},
 			{
+				"inputs": [],
+				"name": "InsufficientDatacap",
+				"type": "error"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -53,6 +58,44 @@
 				"inputs": [
 					{
 						"indexed": true,
+						"internalType": "bytes",
+						"name": "client",
+						"type": "bytes"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "DatacapGranted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "client",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "DatacapGrantedMock",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
 						"internalType": "address",
 						"name": "previousOwner",
 						"type": "address"
@@ -68,6 +111,19 @@
 				"type": "event"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "addDatacap",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "datacapGatewayAddr",
 				"outputs": [
@@ -78,6 +134,42 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "clientFilecoinAddress",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "grantDatacap",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "clientFilecoinAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "grantDatacapMock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -121,7 +213,33 @@
 			},
 			{
 				"inputs": [],
+				"name": "remainingDatacap",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "setDatacap",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -206,19 +324,19 @@
 			]
 		},
 		"contracts/13_StorageProviderEscrow.sol": {
-			"keccak256": "0x3de566c439626eafc257bfc30fa1ad923bb791aeed2f2728d05644e5185e642f",
+			"keccak256": "0x32818cb803bda39aff8f840845f19a77d434020a94111cbf5b0585693be26b1c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e343efb7e2e649ebcba62d44a0b9773a0b3132146b58e84c345c4b6c9e8bdd98",
-				"dweb:/ipfs/QmRPEhq8Qguy9sHLfEYf5B61z2fb4SDb3X7PEBKG9m3c9T"
+				"bzz-raw://1735a9bd55cede06773b4a4d27f2e89626b4c6a90b3a5301de8345bf277fbe1b",
+				"dweb:/ipfs/Qme33FXmrachipuGsGoUHqPr1E9fN4Fx91esV51c8WeXmk"
 			]
 		},
 		"interfaces/IDatacapGateway.sol": {
-			"keccak256": "0x7f0ae35ccebbc2e24ebb3ba51c613d16c03ff91fc15178aef9ea5d0016de979b",
+			"keccak256": "0xa6e358f3e8bb00c39b46e0c01208f3e9812af17e24a8b0cb52da12641704209e",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://37c8ba5d0641d1c6e2843cb123f62d70a74b6a1e8835ef97d3285475cbe658f0",
-				"dweb:/ipfs/QmQEgYhFCnuBPRcj43poCTitWqbwB8wZVJ7ddYD8ftorxJ"
+				"bzz-raw://0fae3f128c533d7c25d1fad3a5449e16c1e3fabce188219c7a94ef9790e19be1",
+				"dweb:/ipfs/QmU7nc5MdyRPVdBZcjoXf6iVm8Hvs9bMkdcF2fgPrS3ic8"
 			]
 		}
 	},
