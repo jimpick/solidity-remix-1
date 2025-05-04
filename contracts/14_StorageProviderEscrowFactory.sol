@@ -14,6 +14,8 @@ contract StorageProviderEscrowFactory is Ownable, IStorageProviderEscrowFactory 
     using EnumerableMap for EnumerableMap.UintToAddressMap;
     using EnumerableSet for EnumerableSet.AddressSet;
 
+    address public usdcAddr;
+
     address public datacapGatewayAddr;
 
     EnumerableSet.AddressSet private _escrows;
@@ -21,7 +23,8 @@ contract StorageProviderEscrowFactory is Ownable, IStorageProviderEscrowFactory 
  
     uint256 public nextId;
 
-    constructor(address initialOwner) Ownable(initialOwner) {
+    constructor(address initialOwner, address usdcAddress) Ownable(initialOwner) {
+        usdcAddr = usdcAddress;
     }
 
     function setDatacapGateway(address datacapGatewayAddress) external onlyOwner {
@@ -32,7 +35,7 @@ contract StorageProviderEscrowFactory is Ownable, IStorageProviderEscrowFactory 
         if (datacapGatewayAddr == address(0)) {
             revert DatacapGatewayUnset();
         }
-        StorageProviderEscrow spEscrow = new StorageProviderEscrow(msg.sender, datacapGatewayAddr, nextId);
+        StorageProviderEscrow spEscrow = new StorageProviderEscrow(msg.sender, usdcAddr, datacapGatewayAddr, nextId);
         _escrows.add(address(spEscrow));
         _escrowsById.set(nextId, address(spEscrow));
         nextId++;

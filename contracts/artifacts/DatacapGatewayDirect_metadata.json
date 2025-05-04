@@ -266,14 +266,14 @@
 			]
 		},
 		"contracts/15_DatacapGatewayDirect.sol": {
-			"keccak256": "0xb988d7ec21fa8f9392ced52f913f6cdadf1a786b03166fa07f30c4ede822bd42",
+			"keccak256": "0x38af59cdc866a94b8e42537dbda5555ff8ce10d1d7cbec224aee551ae7926482",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://42dd0fc52ef1ba8ced845df85d13a044b8558131a8b5e0cf86b2f33a57cb5dea",
-				"dweb:/ipfs/Qme6UVdQwzcZnh6FVUgPrX6uezwc7KRRQ4ktgG8ZwwM829"
+				"bzz-raw://227eb7b1a47340281ce5ba3717abbde3da9787b9420beb0a24c7de2c26e8fcf7",
+				"dweb:/ipfs/QmUTqPHEWK8pT8GsEu7NvmyaaaGxnYCKdQQqHcZTGpVikL"
 			]
 		},
-		"interfaces/IDatacapGateway.sol": {
+		"contracts/interfaces/IDatacapGateway.sol": {
 			"keccak256": "0xa6e358f3e8bb00c39b46e0c01208f3e9812af17e24a8b0cb52da12641704209e",
 			"license": "UNLICENSED",
 			"urls": [
@@ -281,7 +281,7 @@
 				"dweb:/ipfs/QmU7nc5MdyRPVdBZcjoXf6iVm8Hvs9bMkdcF2fgPrS3ic8"
 			]
 		},
-		"interfaces/IMockAllocator.sol": {
+		"contracts/interfaces/IMockAllocator.sol": {
 			"keccak256": "0xd800b2cdec7fe10a6f748f54244e2c808213848917985229c83f125bf525f5bc",
 			"license": "UNLICENSED",
 			"urls": [
@@ -289,7 +289,7 @@
 				"dweb:/ipfs/QmRNRnb3pfj1co4VWA2C8Ctop6G76XfqmhF4WFP2LaB6ko"
 			]
 		},
-		"interfaces/IStorageProviderEscrowFactory.sol": {
+		"contracts/interfaces/IStorageProviderEscrowFactory.sol": {
 			"keccak256": "0x370df260194943550278617734ba1b17f4f09e996388960990a52c0c9bb9cb1d",
 			"license": "UNLICENSED",
 			"urls": [

@@ -11,6 +11,11 @@
 						"internalType": "address",
 						"name": "initialOwner",
 						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "usdcAddress",
+						"type": "address"
 					}
 				],
 				"stateMutability": "nonpayable",
@@ -202,6 +207,19 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "usdcAddr",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -264,6 +282,14 @@
 			"urls": [
 				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
 				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0xe06a3f08a987af6ad2e1c1e774405d4fe08f1694b67517438b467cecf0da0ef7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://df6f0c459663c9858b6cba2cda1d14a7d05a985bed6d2de72bd8e78c25ee79db",
+				"dweb:/ipfs/QmeTTxZ7qVk9rjEv2R4CpCwdf8UMCcRqDNMvzNxHc3Fnn9"
 			]
 		},
 		"@openzeppelin/contracts/utils/Arrays.sol": {
@@ -347,22 +373,22 @@
 			]
 		},
 		"contracts/13_StorageProviderEscrow.sol": {
-			"keccak256": "0x32818cb803bda39aff8f840845f19a77d434020a94111cbf5b0585693be26b1c",
+			"keccak256": "0xd24414d93baf066e104711618fbb03eccce25c7a9065ea7abc7b236c6c82d80e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1735a9bd55cede06773b4a4d27f2e89626b4c6a90b3a5301de8345bf277fbe1b",
-				"dweb:/ipfs/Qme33FXmrachipuGsGoUHqPr1E9fN4Fx91esV51c8WeXmk"
+				"bzz-raw://e38bc9a2ae84102d96f790ede85ff9f3e9ef519d00fbf05ac5c02b07921d8219",
+				"dweb:/ipfs/QmWfS6okHgUZxehzMsiZz855VkpTfqjVBVqsi5iJieWVyW"
 			]
 		},
 		"contracts/14_StorageProviderEscrowFactory.sol": {
-			"keccak256": "0x308cf0bebe9e4c359545ae68b653b4b5e6c241abd9bb6e33c896fe39d47ac473",
+			"keccak256": "0x3a81fe72d3a43c81f1be6305039a475e3e7c7087825609e1f050b109b52fb560",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c8a9eb1fcab50b4fe14e069b0cfdf898fdb0cbda1e1329b1f1cecfbfe94e2675",
-				"dweb:/ipfs/QmcPhwHaanuB7P9VFH1wRLEghiscpQoAfXbxq4hnUCQTbF"
+				"bzz-raw://9d08779a0392b8299d93f985e5379de6d2b69d3a19ed5c2cf3609d2e30d35592",
+				"dweb:/ipfs/QmYsPrNUQ7dLJWbM7mvBNK3ekAMMz4p9epcroY8NeoJ6G9"
 			]
 		},
-		"interfaces/IDatacapGateway.sol": {
+		"contracts/interfaces/IDatacapGateway.sol": {
 			"keccak256": "0xa6e358f3e8bb00c39b46e0c01208f3e9812af17e24a8b0cb52da12641704209e",
 			"license": "UNLICENSED",
 			"urls": [
@@ -370,7 +396,7 @@
 				"dweb:/ipfs/QmU7nc5MdyRPVdBZcjoXf6iVm8Hvs9bMkdcF2fgPrS3ic8"
 			]
 		},
-		"interfaces/IStorageProviderEscrowFactory.sol": {
+		"contracts/interfaces/IStorageProviderEscrowFactory.sol": {
 			"keccak256": "0x370df260194943550278617734ba1b17f4f09e996388960990a52c0c9bb9cb1d",
 			"license": "UNLICENSED",
 			"urls": [
