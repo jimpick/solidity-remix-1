@@ -239,7 +239,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/5_Axelar_CallContract.sol": "CallContract"
+			"contracts/05_Axelar_CallContract.sol": "CallContract"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -341,7 +341,7 @@
 				"dweb:/ipfs/QmYiuEMnYZod1iRTaEcqbJcUp3LwdDPyt2M7KUaqECivau"
 			]
 		},
-		"contracts/5_Axelar_CallContract.sol": {
+		"contracts/05_Axelar_CallContract.sol": {
 			"keccak256": "0xef81935ccb1760e6a83ab5aa5cbcc84caa63c1fedcc718039bd9b7621741673c",
 			"license": "MIT",
 			"urls": [

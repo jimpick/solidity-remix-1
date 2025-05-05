@@ -5,6 +5,8 @@ import { AxelarExecutable } from '@axelar-network/axelar-gmp-sdk-solidity/contra
 import { IAxelarGasService } from '@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IAxelarGasService.sol';
 import { IERC20 } from '@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IERC20.sol';
 
+// https://testnet.axelarscan.io/resources/chains?type=evm
+
 /**
  * @title CallContract
  * @notice Send a message from chain A to chain B and stores gmp message

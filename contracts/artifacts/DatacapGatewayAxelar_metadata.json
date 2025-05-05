@@ -1,0 +1,442 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "initialOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_mockAllocator",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "axelarGateway",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "axelarGasService",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "destinationChain",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "destinationAddress",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "OwnableInvalidOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "OwnableUnauthorizedAccount",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "StorageProviderEscrowFactoryUnset",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "UnauthorizedAccount",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "axelarGatewayAddr",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "destAddr",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "destChain",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "gasService",
+				"outputs": [
+					{
+						"internalType": "contract IAxelarGasService",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "clientFilecoinAddress",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "grantDatacap",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "clientFilecoinAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "grantDatacapMock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "hasAccess",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "mockAllocator",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "storageProviderEscrowFactoryAddress",
+						"type": "address"
+					}
+				],
+				"name": "setStorageProviderEscrowFactory",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "storageProviderEscrowFactoryAddr",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"errors": {
+				"OwnableInvalidOwner(address)": [
+					{
+						"details": "The owner is not a valid owner account. (eg. `address(0)`)"
+					}
+				],
+				"OwnableUnauthorizedAccount(address)": [
+					{
+						"details": "The caller account is not authorized to perform an operation."
+					}
+				]
+			},
+			"kind": "dev",
+			"methods": {
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/16_DatacapGatewayAxelar.sol": "DatacapGatewayAxelar"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IAxelarGasService.sol": {
+			"keccak256": "0x7ad77d3af41f342e9032889a7b5aa224ab0c6dfaf9ce9350fe403d4a596c5eae",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cc2358f1f1138cd742a7cfdfc83420c488c19c3b3e39d703482e124e453953ee",
+				"dweb:/ipfs/QmYki4j2yWrixJVs955DyS1ZmLD5zcxe8ss52w6DLBLRi4"
+			]
+		},
+		"@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IAxelarGateway.sol": {
+			"keccak256": "0xbd92798eade563d8a663db59f6f04db5acdee5beda3a6d091e44a7d5c6b2f68e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1519882aed7b6de2ee1e316e5188d2bda1e305fc18a96b3895831f49dc9f90b0",
+				"dweb:/ipfs/QmYTLwLGwmDkyX6GSE6PU93TkWP5mFz8qhmFyBrWfj6gaB"
+			]
+		},
+		"@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IContractIdentifier.sol": {
+			"keccak256": "0x21a94655f7f1ed3d7188bd38ce6187892c615b80f9a74e123cbc38113d855a35",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e7e1f30e159d40a9f8431c26955a584507bc23a30f19380c723acdb4182ba7c1",
+				"dweb:/ipfs/QmXb965di5pU3m3W36k19ZX8m6qCDaEi1jEt6NocqrGPXj"
+			]
+		},
+		"@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IImplementation.sol": {
+			"keccak256": "0xa7f275514d44bec3ab8ab8c768736329174d7cc6c5cd329c3509a66bce9cd468",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://983e8c97e4916b47244d71fa104fc368100991561fe8c28f1a6bae043763754d",
+				"dweb:/ipfs/QmeFeJsCowShVsAe6RMiz3qjY2JTyRNYRRu1oYQcN9T6uV"
+			]
+		},
+		"@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IInterchainGasEstimation.sol": {
+			"keccak256": "0x5463c0d3632e53d3906796d4283a627bd7ebc63d0092685715d98340db9516ff",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9cd73f4b82b70f3e93b23ac591696de14b1cc88e1e60a5f66b1ac8b0e2ecd2ec",
+				"dweb:/ipfs/Qmd8psz6tmcmop1iD6fqX8vCRfrkVm7aGMZCXEbsiVjBV8"
+			]
+		},
+		"@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IOwnable.sol": {
+			"keccak256": "0x5cb5691c9293e3011e1b133485411e8933ca1e110f2436a663df12991d134bf7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cdbeb0f7ec37155f976a3bdd9f13055c80f1b2d17043740d387403cb8d65a096",
+				"dweb:/ipfs/QmXKLyWetJGgwUuEtexjPxfeZdgUywhrHS4898fQSFkC5y"
+			]
+		},
+		"@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IUpgradable.sol": {
+			"keccak256": "0x4e1f84c9711c3c15c77aee5fce8de99fcb49a902c7e6ff24626c924a60b8c22d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b2f36d8fb4b365e78663579bfd0d3252a6e290f6dd763d9275f4c6f5f51577d9",
+				"dweb:/ipfs/QmZjhnPbjqnRztwbYYs1BdxRbSsAmSLkCfE9SNRk4jMFMe"
+			]
+		},
+		"@axelar-network/axelar-gmp-sdk-solidity/contracts/types/GasEstimationTypes.sol": {
+			"keccak256": "0x7da6d20700698dfae8f8252c442e4bebd29030ffcdac4fbbe986f1ddbcb6365c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://992662e49dbc87ab994d8b68c5183dcd5453c71d04f98816b68cb00589938058",
+				"dweb:/ipfs/QmYiuEMnYZod1iRTaEcqbJcUp3LwdDPyt2M7KUaqECivau"
+			]
+		},
+		"@openzeppelin/contracts/access/Ownable.sol": {
+			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
+				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
+			]
+		},
+		"@openzeppelin/contracts/utils/Context.sol": {
+			"keccak256": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
+				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
+			]
+		},
+		"contracts/16_DatacapGatewayAxelar.sol": {
+			"keccak256": "0xcc0139d69ed0802f526e38f6a364d422bfc638be4a190c642d571b0ae31ac491",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d40552a48ceddb72d39b3b89a294f3cf1bc5a81d8f5918af8e3edc626ee9647c",
+				"dweb:/ipfs/QmeN4A7g3cSehdMzXqQRBPicHT32rG5Kn8NDFJ7Q8Zif8T"
+			]
+		},
+		"contracts/interfaces/IDatacapGateway.sol": {
+			"keccak256": "0xa6e358f3e8bb00c39b46e0c01208f3e9812af17e24a8b0cb52da12641704209e",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://0fae3f128c533d7c25d1fad3a5449e16c1e3fabce188219c7a94ef9790e19be1",
+				"dweb:/ipfs/QmU7nc5MdyRPVdBZcjoXf6iVm8Hvs9bMkdcF2fgPrS3ic8"
+			]
+		},
+		"contracts/interfaces/IMockAllocator.sol": {
+			"keccak256": "0xd800b2cdec7fe10a6f748f54244e2c808213848917985229c83f125bf525f5bc",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://bf500e29b9e2d22869bba2c732901027873112f3796a33db35a940e2598cb8f2",
+				"dweb:/ipfs/QmRNRnb3pfj1co4VWA2C8Ctop6G76XfqmhF4WFP2LaB6ko"
+			]
+		},
+		"contracts/interfaces/IStorageProviderEscrowFactory.sol": {
+			"keccak256": "0x370df260194943550278617734ba1b17f4f09e996388960990a52c0c9bb9cb1d",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://746b1e958db3aca7edfd0746f8cac5c638ac3e83495ddaf73ed139abee0201b6",
+				"dweb:/ipfs/QmbzeWf5JWqkWHVYzrACNHJwq4joCfe73EMnm6zV8KnyDF"
+			]
+		}
+	},
+	"version": 1
+}

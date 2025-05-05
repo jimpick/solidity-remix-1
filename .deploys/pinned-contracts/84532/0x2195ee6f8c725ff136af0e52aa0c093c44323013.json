@@ -1,6 +1,6 @@
 {
   "name": "StorageProviderEscrowFactory",
-  "address": "0xa6d85ac13ab1361c58d59ae961d6738d9f42b1e7",
+  "address": "0x2195ee6f8c725ff136af0e52aa0c093c44323013",
   "abi": [
     {
       "inputs": [],
@@ -220,5 +220,5 @@
     }
   ],
   "filePath": "USDC-1/contracts/14_StorageProviderEscrowFactory.sol",
-  "pinnedAt": 1746382620702
+  "pinnedAt": 1746458307831
 }

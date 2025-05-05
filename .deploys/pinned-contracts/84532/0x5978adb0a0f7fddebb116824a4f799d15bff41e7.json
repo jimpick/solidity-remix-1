@@ -1,44 +1,7 @@
 {
-  "name": "StorageProviderEscrow",
-  "address": "0xA4938bDbce4275D26e77a127b7d445B718f459e7",
+  "name": "DatacapGatewayAxelar",
+  "address": "0x5978adb0a0f7fddebb116824a4f799d15bff41e7",
   "abi": [
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "addDatacap",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "spender",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "value",
-          "type": "uint256"
-        }
-      ],
-      "name": "approve",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
     {
       "inputs": [
         {
@@ -76,26 +39,6 @@
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "renounceOwnership",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "storageProviderAddress",
-          "type": "address"
-        }
-      ],
-      "name": "setStorageProviderAddr",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
       "inputs": [
         {
           "internalType": "address",
@@ -104,27 +47,32 @@
         },
         {
           "internalType": "address",
-          "name": "usdcAddress",
+          "name": "_mockAllocator",
           "type": "address"
         },
         {
           "internalType": "address",
-          "name": "datacapGatewayAddress",
+          "name": "axelarGateway",
           "type": "address"
         },
         {
-          "internalType": "uint256",
-          "name": "newId",
-          "type": "uint256"
+          "internalType": "address",
+          "name": "axelarGasService",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "destinationChain",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "destinationAddress",
+          "type": "string"
         }
       ],
       "stateMutability": "nonpayable",
       "type": "constructor"
-    },
-    {
-      "inputs": [],
-      "name": "InsufficientDatacap",
-      "type": "error"
     },
     {
       "inputs": [
@@ -149,21 +97,8 @@
       "type": "error"
     },
     {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "setDatacap",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
       "inputs": [],
-      "name": "StorageProviderAddressUnset",
+      "name": "StorageProviderEscrowFactoryUnset",
       "type": "error"
     },
     {
@@ -176,44 +111,6 @@
       ],
       "name": "UnauthorizedAccount",
       "type": "error"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "bytes",
-          "name": "client",
-          "type": "bytes"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "DatacapGranted",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "client",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "DatacapGrantedMock",
-      "type": "event"
     },
     {
       "anonymous": false,
@@ -235,26 +132,22 @@
       "type": "event"
     },
     {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
           "internalType": "address",
-          "name": "to",
+          "name": "storageProviderEscrowFactoryAddress",
           "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "value",
-          "type": "uint256"
         }
       ],
-      "name": "transfer",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
+      "name": "setStorageProviderEscrowFactory",
+      "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
     },
@@ -272,8 +165,12 @@
       "type": "function"
     },
     {
+      "stateMutability": "payable",
+      "type": "receive"
+    },
+    {
       "inputs": [],
-      "name": "datacapGatewayAddr",
+      "name": "axelarGatewayAddr",
       "outputs": [
         {
           "internalType": "address",
@@ -286,7 +183,46 @@
     },
     {
       "inputs": [],
-      "name": "hasDatacapGatewayAccess",
+      "name": "destAddr",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "destChain",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "gasService",
+      "outputs": [
+        {
+          "internalType": "contract IAxelarGasService",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "hasAccess",
       "outputs": [
         {
           "internalType": "bool",
@@ -299,12 +235,12 @@
     },
     {
       "inputs": [],
-      "name": "id",
+      "name": "mockAllocator",
       "outputs": [
         {
-          "internalType": "uint256",
+          "internalType": "address",
           "name": "",
-          "type": "uint256"
+          "type": "address"
         }
       ],
       "stateMutability": "view",
@@ -325,33 +261,7 @@
     },
     {
       "inputs": [],
-      "name": "remainingDatacap",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "storageProviderAddr",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "usdcAddr",
+      "name": "storageProviderEscrowFactoryAddr",
       "outputs": [
         {
           "internalType": "address",
@@ -363,6 +273,6 @@
       "type": "function"
     }
   ],
-  "filePath": "USDC-1/contracts/13_StorageProviderEscrow.sol",
-  "pinnedAt": 1746382730885
+  "filePath": "USDC-1/contracts/16_DatacapGatewayAxelar.sol",
+  "pinnedAt": 1746459963573
 }
