@@ -61,15 +61,15 @@ contract DatacapGatewayAxelar is Ownable, IDatacapGateway {
         return true;
     }
 
-    function grantDatacap(bytes calldata clientFilecoinAddress, uint256 amount) external onlyEscrowContracts {
+    function grantDatacap(bytes calldata clientFilecoinAddress, uint256 amount) external payable onlyEscrowContracts {
         IMockAllocator allocator = IMockAllocator(mockAllocator);
         allocator.addVerifiedClient(clientFilecoinAddress, amount);
     }
 
-    function grantDatacapMock(address clientFilecoinAddress, uint256 amount) external onlyEscrowContracts {
+    function grantDatacapMock(address clientFilecoinAddress, uint256 amount) external payable onlyEscrowContracts {
         string memory _message = "grant called";
         bytes memory payload = abi.encode(_message);
-        gasService.payNativeGasForContractCall{ value: 1000000000000000 }(
+        gasService.payNativeGasForContractCall{ value: msg.value }(
             address(this),
             destChain,
             destAddr,

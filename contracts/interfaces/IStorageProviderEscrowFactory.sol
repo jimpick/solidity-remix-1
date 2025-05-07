@@ -8,6 +8,8 @@ pragma solidity ^0.8.0;
 interface IStorageProviderEscrowFactory {
     error DatacapGatewayUnset();
 
+    function datacapGateway() external returns (address);
+
     function setDatacapGateway(address datacapGatewayAddress) external;
 
     function createStorageProviderEscrow() external;

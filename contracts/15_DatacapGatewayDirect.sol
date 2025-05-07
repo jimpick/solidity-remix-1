@@ -37,12 +37,12 @@ contract DatacapGatewayDirect is Ownable, IDatacapGateway {
         return true;
     }
 
-    function grantDatacap(bytes calldata clientFilecoinAddress, uint256 amount) external onlyEscrowContracts {
+    function grantDatacap(bytes calldata clientFilecoinAddress, uint256 amount) external payable onlyEscrowContracts {
         IMockAllocator allocator = IMockAllocator(mockAllocator);
         allocator.addVerifiedClient(clientFilecoinAddress, amount);
     }
 
-    function grantDatacapMock(address clientFilecoinAddress, uint256 amount) external onlyEscrowContracts {
+    function grantDatacapMock(address clientFilecoinAddress, uint256 amount) external payable onlyEscrowContracts {
         IMockAllocator allocator = IMockAllocator(mockAllocator);
         allocator.addVerifiedClientMock(clientFilecoinAddress, amount);
     }

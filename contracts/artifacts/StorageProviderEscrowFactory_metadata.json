@@ -79,6 +79,19 @@
 				"type": "event"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "escrow",
+						"type": "address"
+					}
+				],
+				"name": "StorageProviderEscrowCreated",
+				"type": "event"
+			},
+			{
 				"inputs": [],
 				"name": "createStorageProviderEscrow",
 				"outputs": [],
@@ -87,7 +100,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "datacapGatewayAddr",
+				"name": "datacapGateway",
 				"outputs": [
 					{
 						"internalType": "address",
@@ -373,35 +386,35 @@
 			]
 		},
 		"contracts/13_StorageProviderEscrow.sol": {
-			"keccak256": "0xef7f6600b7a31fed594ef3ea9510db89633f8751c05cfc5fabc10228968107ef",
+			"keccak256": "0x028aa530c0bb85ce730b7de7867e8dfc9313d7c1e98875a3233eee9e5964c265",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://109cdcd4134231ed8a442ac43a93ce0061d7e3524fba7c8933ef1e9ce17cb3b0",
-				"dweb:/ipfs/QmdYWgS6KcV6NpWGJA4vdijkCBR24KbWGhkcW4i87qGnQN"
+				"bzz-raw://e917c640330a0025a832ada14c9f04749e51b8585785cbd5eb17c67ab4fb2612",
+				"dweb:/ipfs/QmPnpXkfa66Tu1WLisvUQU7fcoLb7VVhYc4EteXy6oeLW1"
 			]
 		},
 		"contracts/14_StorageProviderEscrowFactory.sol": {
-			"keccak256": "0x3a81fe72d3a43c81f1be6305039a475e3e7c7087825609e1f050b109b52fb560",
+			"keccak256": "0x2ef448e50d48b209a58b09fb528f530f7a6467cc3503e82fd467ff7fb584262a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9d08779a0392b8299d93f985e5379de6d2b69d3a19ed5c2cf3609d2e30d35592",
-				"dweb:/ipfs/QmYsPrNUQ7dLJWbM7mvBNK3ekAMMz4p9epcroY8NeoJ6G9"
+				"bzz-raw://f747c7f1e47b494541e9b0354df0a752625e1d8919d71a8c15b5b295b10b76af",
+				"dweb:/ipfs/QmX4y2QpPyyW8eUwi6BrpWpo6rcZEcH95gFUNvMd1J61UG"
 			]
 		},
 		"contracts/interfaces/IDatacapGateway.sol": {
-			"keccak256": "0xa6e358f3e8bb00c39b46e0c01208f3e9812af17e24a8b0cb52da12641704209e",
+			"keccak256": "0xa37ec1345853e67b98eedf7df465d6b6aee73d4d45433f1f0c16975e8c429360",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://0fae3f128c533d7c25d1fad3a5449e16c1e3fabce188219c7a94ef9790e19be1",
-				"dweb:/ipfs/QmU7nc5MdyRPVdBZcjoXf6iVm8Hvs9bMkdcF2fgPrS3ic8"
+				"bzz-raw://f1a9264d9caadf7037b4b35a834bd882ffcbdd44c79845f3ed936f3c6852a85d",
+				"dweb:/ipfs/QmVynkW6NFhBRL9JTp4yjp8qadEg3BySYVX1ufmrCiesP6"
 			]
 		},
 		"contracts/interfaces/IStorageProviderEscrowFactory.sol": {
-			"keccak256": "0x370df260194943550278617734ba1b17f4f09e996388960990a52c0c9bb9cb1d",
+			"keccak256": "0x8295b00cbe148a7ae6ca49252e2ef3181b5bbb79fda2831f15ce0d2dd5e1f30c",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://746b1e958db3aca7edfd0746f8cac5c638ac3e83495ddaf73ed139abee0201b6",
-				"dweb:/ipfs/QmbzeWf5JWqkWHVYzrACNHJwq4joCfe73EMnm6zV8KnyDF"
+				"bzz-raw://ca7dfeecdbe471778d97e5ceb477f41c967ec141f7bfa08d53f48881c3c8536d",
+				"dweb:/ipfs/QmRpH94oQZBfNdgGJ7sUMMrHqyn8pq6yC3WvmdFia3drLy"
 			]
 		}
 	},

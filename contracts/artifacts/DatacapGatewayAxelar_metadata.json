@@ -165,7 +165,7 @@
 				],
 				"name": "grantDatacap",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -183,7 +183,7 @@
 				],
 				"name": "grantDatacapMock",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -406,19 +406,19 @@
 			]
 		},
 		"contracts/16_DatacapGatewayAxelar.sol": {
-			"keccak256": "0xcc0139d69ed0802f526e38f6a364d422bfc638be4a190c642d571b0ae31ac491",
+			"keccak256": "0x9e6281a698b0c3841610670efa19166a77c9b8e84797d47bfcbc024727e44c47",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d40552a48ceddb72d39b3b89a294f3cf1bc5a81d8f5918af8e3edc626ee9647c",
-				"dweb:/ipfs/QmeN4A7g3cSehdMzXqQRBPicHT32rG5Kn8NDFJ7Q8Zif8T"
+				"bzz-raw://1658f0761e9f7e63d07117218d4111dca27beaf6e608665bb1362b0759d64120",
+				"dweb:/ipfs/Qmbf2BEHAjiar3zVNovwhskCbMZyhGZq5bpnqFZZqdSZ9V"
 			]
 		},
 		"contracts/interfaces/IDatacapGateway.sol": {
-			"keccak256": "0xa6e358f3e8bb00c39b46e0c01208f3e9812af17e24a8b0cb52da12641704209e",
+			"keccak256": "0xa37ec1345853e67b98eedf7df465d6b6aee73d4d45433f1f0c16975e8c429360",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://0fae3f128c533d7c25d1fad3a5449e16c1e3fabce188219c7a94ef9790e19be1",
-				"dweb:/ipfs/QmU7nc5MdyRPVdBZcjoXf6iVm8Hvs9bMkdcF2fgPrS3ic8"
+				"bzz-raw://f1a9264d9caadf7037b4b35a834bd882ffcbdd44c79845f3ed936f3c6852a85d",
+				"dweb:/ipfs/QmVynkW6NFhBRL9JTp4yjp8qadEg3BySYVX1ufmrCiesP6"
 			]
 		},
 		"contracts/interfaces/IMockAllocator.sol": {
@@ -430,11 +430,11 @@
 			]
 		},
 		"contracts/interfaces/IStorageProviderEscrowFactory.sol": {
-			"keccak256": "0x370df260194943550278617734ba1b17f4f09e996388960990a52c0c9bb9cb1d",
+			"keccak256": "0x8295b00cbe148a7ae6ca49252e2ef3181b5bbb79fda2831f15ce0d2dd5e1f30c",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://746b1e958db3aca7edfd0746f8cac5c638ac3e83495ddaf73ed139abee0201b6",
-				"dweb:/ipfs/QmbzeWf5JWqkWHVYzrACNHJwq4joCfe73EMnm6zV8KnyDF"
+				"bzz-raw://ca7dfeecdbe471778d97e5ceb477f41c967ec141f7bfa08d53f48881c3c8536d",
+				"dweb:/ipfs/QmRpH94oQZBfNdgGJ7sUMMrHqyn8pq6yC3WvmdFia3drLy"
 			]
 		}
 	},

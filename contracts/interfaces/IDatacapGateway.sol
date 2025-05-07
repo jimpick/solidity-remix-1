@@ -10,7 +10,7 @@ interface IDatacapGateway {
 
     function hasAccess() external view returns (bool);
  
-    function grantDatacap(bytes calldata clientFilecoinAddress, uint256 amount) external;
+    function grantDatacap(bytes calldata clientFilecoinAddress, uint256 amount) external payable;
  
-    function grantDatacapMock(address clientFilecoinAddress, uint256 amount) external;
+    function grantDatacapMock(address clientFilecoinAddress, uint256 amount) external payable;
 }

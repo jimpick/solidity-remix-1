@@ -5,22 +5,20 @@ pragma solidity ^0.8.0;
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
+import {IStorageProviderEscrowFactory} from "./interfaces/IStorageProviderEscrowFactory.sol";
 import {IDatacapGateway} from "./interfaces/IDatacapGateway.sol";
 
 contract StorageProviderEscrow is Ownable {
-    address public usdcAddr;
-
-    address public datacapGatewayAddr;
+    IERC20 public usdc;
+    IStorageProviderEscrowFactory public storageProviderEscrowFactory;
 
     uint256 public id;
-
     uint256 public remainingDatacap;
-
     address public storageProviderAddr;
 
-    constructor(address initialOwner, address usdcAddress, address datacapGatewayAddress, uint256 newId) Ownable(initialOwner) {
-        usdcAddr = usdcAddress;
-        datacapGatewayAddr = datacapGatewayAddress;
+    constructor(address initialOwner, address usdcAddress, uint256 newId) Ownable(initialOwner) {
+        usdc = IERC20(usdcAddress);
+        storageProviderEscrowFactory = IStorageProviderEscrowFactory(msg.sender);
         id = newId;
     }
 
@@ -42,7 +40,8 @@ contract StorageProviderEscrow is Ownable {
         _;
     }
 
-    function hasDatacapGatewayAccess() external view returns (bool) {
+    function hasDatacapGatewayAccess() external returns (bool) {
+        address datacapGatewayAddr = storageProviderEscrowFactory.datacapGateway();
         IDatacapGateway gateway = IDatacapGateway(datacapGatewayAddr);
         return gateway.hasAccess();
     }
@@ -59,25 +58,28 @@ contract StorageProviderEscrow is Ownable {
 
     event DatacapGranted(bytes indexed client, uint256 amount);
 
-    function grantDatacap(bytes calldata clientFilecoinAddress, uint256 amount) external onlySPOrOwner {
+    function grantDatacap(bytes calldata clientFilecoinAddress, uint256 amount) external payable onlySPOrOwner {
         if (remainingDatacap < amount) {
             revert InsufficientDatacap();
         }
         remainingDatacap -= amount;
+        address datacapGatewayAddr = storageProviderEscrowFactory.datacapGateway();
         IDatacapGateway gateway = IDatacapGateway(datacapGatewayAddr);
-        gateway.grantDatacap(clientFilecoinAddress, amount);
+        gateway.grantDatacap{ value: msg.value }(clientFilecoinAddress, amount);
         emit DatacapGranted(clientFilecoinAddress, amount);
     }
 
     event DatacapGrantedMock(address indexed client, uint256 amount);
 
-    function grantDatacapMock(address clientFilecoinAddress, uint256 amount) external onlySPOrOwner {
+    function grantDatacapMock(address clientFilecoinAddress, uint256 amount) external payable onlySPOrOwner {
          if (remainingDatacap < amount) {
             revert InsufficientDatacap();
         }
         remainingDatacap -= amount;
+        address datacapGatewayAddr = storageProviderEscrowFactory.datacapGateway();
         IDatacapGateway gateway = IDatacapGateway(datacapGatewayAddr);
-        gateway.grantDatacapMock(clientFilecoinAddress, amount);
+        gateway.grantDatacapMock{ value: msg.value }(clientFilecoinAddress, amount);
+        emit DatacapGrantedMock(clientFilecoinAddress, amount);
     }
 
     // ERC20 methods
@@ -90,7 +92,6 @@ contract StorageProviderEscrow is Ownable {
      * Emits a {Transfer} event.
      */
     function transfer(address to, uint256 value) external onlySPOrOwner returns (bool) {
-        IERC20 usdc = IERC20(usdcAddr);
         return usdc.transfer(to, value);
     } 
 
@@ -110,7 +111,6 @@ contract StorageProviderEscrow is Ownable {
      * Emits an {Approval} event.
      */
     function approve(address spender, uint256 value) external onlySPOrOwner returns (bool) {
-        IERC20 usdc = IERC20(usdcAddr);
         return usdc.approve(spender, value);
     }
 }

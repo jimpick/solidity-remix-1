@@ -290,11 +290,11 @@
 			]
 		},
 		"contracts/interfaces/IStorageProviderEscrowFactory.sol": {
-			"keccak256": "0x370df260194943550278617734ba1b17f4f09e996388960990a52c0c9bb9cb1d",
+			"keccak256": "0x8295b00cbe148a7ae6ca49252e2ef3181b5bbb79fda2831f15ce0d2dd5e1f30c",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://746b1e958db3aca7edfd0746f8cac5c638ac3e83495ddaf73ed139abee0201b6",
-				"dweb:/ipfs/QmbzeWf5JWqkWHVYzrACNHJwq4joCfe73EMnm6zV8KnyDF"
+				"bzz-raw://ca7dfeecdbe471778d97e5ceb477f41c967ec141f7bfa08d53f48881c3c8536d",
+				"dweb:/ipfs/QmRpH94oQZBfNdgGJ7sUMMrHqyn8pq6yC3WvmdFia3drLy"
 			]
 		}
 	},
