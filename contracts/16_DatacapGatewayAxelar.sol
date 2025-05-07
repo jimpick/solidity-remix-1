@@ -12,8 +12,6 @@ import {IStorageProviderEscrowFactory} from "./interfaces/IStorageProviderEscrow
 import {IDatacapGateway} from "./interfaces/IDatacapGateway.sol";
 
 contract DatacapGatewayAxelar is Ownable, IDatacapGateway {
-    address public mockAllocator;
-
     address public storageProviderEscrowFactoryAddr;
 
     address public axelarGatewayAddr;
@@ -26,13 +24,11 @@ contract DatacapGatewayAxelar is Ownable, IDatacapGateway {
 
     constructor(
         address initialOwner,
-        address _mockAllocator,
         address axelarGateway,
         address axelarGasService,
         string memory destinationChain,
         string memory destinationAddress
     ) Ownable(initialOwner) {
-        mockAllocator = _mockAllocator;
         axelarGatewayAddr = axelarGateway;
         gasService = IAxelarGasService(axelarGasService);
         destChain = destinationChain;
@@ -62,13 +58,12 @@ contract DatacapGatewayAxelar is Ownable, IDatacapGateway {
     }
 
     function grantDatacap(bytes calldata clientFilecoinAddress, uint256 amount) external payable onlyEscrowContracts {
-        IMockAllocator allocator = IMockAllocator(mockAllocator);
-        allocator.addVerifiedClient(clientFilecoinAddress, amount);
+        // IMockAllocator allocator = IMockAllocator(mockAllocator);
+        // allocator.addVerifiedClient(clientFilecoinAddress, amount);
     }
 
     function grantDatacapMock(address clientFilecoinAddress, uint256 amount) external payable onlyEscrowContracts {
-        string memory _message = "grant called";
-        bytes memory payload = abi.encode(_message);
+        bytes memory payload = abi.encode(clientFilecoinAddress, amount);
         gasService.payNativeGasForContractCall{ value: msg.value }(
             address(this),
             destChain,

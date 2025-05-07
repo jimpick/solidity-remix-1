@@ -14,11 +14,6 @@
 					},
 					{
 						"internalType": "address",
-						"name": "_mockAllocator",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
 						"name": "axelarGateway",
 						"type": "address"
 					},
@@ -194,19 +189,6 @@
 						"internalType": "bool",
 						"name": "",
 						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "mockAllocator",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -406,11 +388,11 @@
 			]
 		},
 		"contracts/16_DatacapGatewayAxelar.sol": {
-			"keccak256": "0x9e6281a698b0c3841610670efa19166a77c9b8e84797d47bfcbc024727e44c47",
+			"keccak256": "0xc256fad4bd5340bf13434c59b6c9a64559bd37430b78fb9f73fd648d896807a4",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1658f0761e9f7e63d07117218d4111dca27beaf6e608665bb1362b0759d64120",
-				"dweb:/ipfs/Qmbf2BEHAjiar3zVNovwhskCbMZyhGZq5bpnqFZZqdSZ9V"
+				"bzz-raw://c91afa354ec15400d8820ff3f85e408c7f2430625ebf3969afc6832ba939d566",
+				"dweb:/ipfs/QmWJokemh5JkN5v8LYv1QgeouQvBsUoHsYQte3WkjWEa3B"
 			]
 		},
 		"contracts/interfaces/IDatacapGateway.sol": {

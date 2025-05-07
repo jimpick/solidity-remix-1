@@ -1,6 +1,6 @@
 {
   "name": "DatacapGatewayAxelar",
-  "address": "0xefc1c92299a8d46c33dde6b862b1d04e4ffb24e9",
+  "address": "0xd020fa024016cb05d02e976cd3f7135beb9602b9",
   "abi": [
     {
       "inputs": [
@@ -43,11 +43,6 @@
         {
           "internalType": "address",
           "name": "initialOwner",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "_mockAllocator",
           "type": "address"
         },
         {
@@ -235,19 +230,6 @@
     },
     {
       "inputs": [],
-      "name": "mockAllocator",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
       "name": "owner",
       "outputs": [
         {
@@ -274,5 +256,5 @@
     }
   ],
   "filePath": "USDC-1/contracts/16_DatacapGatewayAxelar.sol",
-  "pinnedAt": 1746585649061
+  "pinnedAt": 1746587220816
 }
