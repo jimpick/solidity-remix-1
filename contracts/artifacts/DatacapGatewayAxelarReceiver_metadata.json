@@ -70,9 +70,9 @@
 					},
 					{
 						"indexed": false,
-						"internalType": "address",
+						"internalType": "bytes",
 						"name": "_clientFilecoinAddress",
-						"type": "address"
+						"type": "bytes"
 					},
 					{
 						"indexed": false,
@@ -128,9 +128,9 @@
 				"name": "clientFilecoinAddress",
 				"outputs": [
 					{
-						"internalType": "address",
+						"internalType": "bytes",
 						"name": "",
-						"type": "address"
+						"type": "bytes"
 					}
 				],
 				"stateMutability": "view",
@@ -269,7 +269,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/18_DatacapGatewayAxelarReceiverMock.sol": "DatacapGatewayAxelarReceiverMock"
+			"contracts/17_DatacapGatewayAxelarReceiver.sol": "DatacapGatewayAxelarReceiver"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -315,12 +315,12 @@
 				"dweb:/ipfs/Qme9KLMtbmNvsAj2giGTzNFKAymkMJq88Ef445pLiawKWa"
 			]
 		},
-		"contracts/18_DatacapGatewayAxelarReceiverMock.sol": {
-			"keccak256": "0x2c3657d7720501aebf05efe7f70c630825aec962254d71cffd26de2622ccaec0",
+		"contracts/17_DatacapGatewayAxelarReceiver.sol": {
+			"keccak256": "0x2396a8b63459273cdaa2a3c8b3f6e6845c076d060391fca11e71233ce5e1d531",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2fc4a57188946770058a87605226631277e9c602acb04728b622bf03cd3153fe",
-				"dweb:/ipfs/QmTZNagHj5fKGeVsYSQgogqXtcUtEBhE65WpkkP4wDmMjr"
+				"bzz-raw://e735a40cd4ab68f668f430cc61c44706bab40718a3fc3eeaf3285bdd79b70dab",
+				"dweb:/ipfs/Qmdwc2wMDhUbvJap1ZnvDPdu4jgR7sMLMckTxTSss7Gyqa"
 			]
 		},
 		"contracts/interfaces/IMockAllocator.sol": {

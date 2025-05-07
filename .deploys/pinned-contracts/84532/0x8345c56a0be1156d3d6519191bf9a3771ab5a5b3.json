@@ -1,6 +1,6 @@
 {
   "name": "DatacapGatewayAxelarReceiverMock",
-  "address": "0xbffcb3b732b601c9991b4dcde236336ea1bb2e4b",
+  "address": "0x8345c56a0be1156d3d6519191bf9a3771ab5a5b3",
   "abi": [
     {
       "inputs": [
@@ -36,6 +36,11 @@
           "internalType": "address",
           "name": "axelarGateway",
           "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "mockAllocatorAddr",
+          "type": "address"
         }
       ],
       "stateMutability": "nonpayable",
@@ -49,6 +54,28 @@
     {
       "inputs": [],
       "name": "NotApprovedByGateway",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "addr",
+          "type": "string"
+        }
+      ],
+      "name": "UnauthorizedSourceAddress",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "chain",
+          "type": "string"
+        }
+      ],
+      "name": "UnauthorizedSourceChain",
       "type": "error"
     },
     {
@@ -83,6 +110,24 @@
       "type": "event"
     },
     {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "chain",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "addr",
+          "type": "string"
+        }
+      ],
+      "name": "setAuthorizedSourceChainAndAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "inputs": [],
       "name": "amount",
       "outputs": [
@@ -90,6 +135,32 @@
           "internalType": "uint256",
           "name": "",
           "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "authorizedSourceAddress",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "authorizedSourceChain",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
         }
       ],
       "stateMutability": "view",
@@ -149,5 +220,5 @@
     }
   ],
   "filePath": "USDC-1/contracts/18_DatacapGatewayAxelarReceiverMock.sol",
-  "pinnedAt": 1746587036296
+  "pinnedAt": 1746590177813
 }

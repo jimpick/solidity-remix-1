@@ -37,6 +37,11 @@ contract DatacapGatewayAxelar is Ownable, IDatacapGateway {
 
     receive() external payable {}
 
+    function setDestChainAndAddress(string memory destinationChain, string memory destinationAddress) external onlyOwner {
+        destChain = destinationChain;
+        destAddr = destinationAddress;
+    }
+
     function setStorageProviderEscrowFactory(address storageProviderEscrowFactoryAddress) external onlyOwner {
         storageProviderEscrowFactoryAddr = storageProviderEscrowFactoryAddress;
     }
@@ -58,8 +63,16 @@ contract DatacapGatewayAxelar is Ownable, IDatacapGateway {
     }
 
     function grantDatacap(bytes calldata clientFilecoinAddress, uint256 amount) external payable onlyEscrowContracts {
-        // IMockAllocator allocator = IMockAllocator(mockAllocator);
-        // allocator.addVerifiedClient(clientFilecoinAddress, amount);
+        bytes memory payload = abi.encode(clientFilecoinAddress, amount);
+        gasService.payNativeGasForContractCall{ value: msg.value }(
+            address(this),
+            destChain,
+            destAddr,
+            payload,
+            msg.sender
+        );
+        IAxelarGateway gateway = IAxelarGateway(axelarGatewayAddr);
+        gateway.callContract(destChain, destAddr, payload);
     }
 
     function grantDatacapMock(address clientFilecoinAddress, uint256 amount) external payable onlyEscrowContracts {
@@ -73,8 +86,5 @@ contract DatacapGatewayAxelar is Ownable, IDatacapGateway {
         );
         IAxelarGateway gateway = IAxelarGateway(axelarGatewayAddr);
         gateway.callContract(destChain, destAddr, payload);
-
-        // IMockAllocator allocator = IMockAllocator(mockAllocator);
-        // allocator.addVerifiedClientMock(clientFilecoinAddress, amount);
     }
 }

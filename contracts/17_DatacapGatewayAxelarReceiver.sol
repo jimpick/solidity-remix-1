@@ -4,18 +4,31 @@ pragma solidity ^0.8.0;
 import { AxelarExecutable } from '@axelar-network/axelar-gmp-sdk-solidity/contracts/executable/AxelarExecutable.sol';
 import { IERC20 } from '@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IERC20.sol';
 
+import {IMockAllocator} from "./interfaces/IMockAllocator.sol";
+
 contract DatacapGatewayAxelarReceiver is AxelarExecutable {
-    string public message;
+    IMockAllocator mockAllocator;
+    string public authorizedSourceChain;
+    string public authorizedSourceAddress;
+
+    bytes public clientFilecoinAddress;
+    uint256 public amount;
     string public sourceChain;
     string public sourceAddress;
 
-    event Executed(bytes32 commandId, string _from, string _message);
+    event Executed(bytes32 commandId, string _from, bytes _clientFilecoinAddress, uint256 _amount);
 
-    /**
-     * @param _gateway address of axl gateway on deployed chain
-     */
-    constructor(address _gateway) AxelarExecutable(_gateway) {
+    constructor(address axelarGateway, address mockAllocatorAddr) AxelarExecutable(axelarGateway) {
+        mockAllocator = IMockAllocator(mockAllocatorAddr);
     }
+
+    function setAuthorizedSourceChainAndAddress(string memory chain, string memory addr) public {
+        authorizedSourceChain = chain;
+        authorizedSourceAddress = addr;
+    }
+
+    error UnauthorizedSourceChain(string chain);
+    error UnauthorizedSourceAddress(string addr);
 
     /**
      * @notice logic to be executed on dest chain
@@ -30,10 +43,19 @@ contract DatacapGatewayAxelarReceiver is AxelarExecutable {
         string calldata _sourceAddress,
         bytes calldata _payload
     ) internal override {
-        (message) = abi.decode(_payload, (string));
+        (clientFilecoinAddress, amount) = abi.decode(_payload, (bytes, uint256));
         sourceChain = _sourceChain;
         sourceAddress = _sourceAddress;
 
-        emit Executed(commandId, sourceAddress, message);
+        if (keccak256(abi.encodePacked(_sourceChain)) == keccak256(abi.encodePacked(authorizedSourceChain))) {
+            revert UnauthorizedSourceChain(_sourceChain);
+        }
+        if (keccak256(abi.encodePacked(_sourceAddress)) == keccak256(abi.encodePacked(authorizedSourceAddress))) {
+            revert UnauthorizedSourceChain(_sourceAddress);
+        }
+
+        emit Executed(commandId, sourceAddress, clientFilecoinAddress, amount);
+
+        mockAllocator.addVerifiedClient(clientFilecoinAddress, amount);
     }
 }

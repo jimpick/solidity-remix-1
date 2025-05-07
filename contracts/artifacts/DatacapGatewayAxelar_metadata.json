@@ -217,6 +217,24 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "destinationChain",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "destinationAddress",
+						"type": "string"
+					}
+				],
+				"name": "setDestChainAndAddress",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "storageProviderEscrowFactoryAddress",
 						"type": "address"
@@ -388,11 +406,11 @@
 			]
 		},
 		"contracts/16_DatacapGatewayAxelar.sol": {
-			"keccak256": "0xc256fad4bd5340bf13434c59b6c9a64559bd37430b78fb9f73fd648d896807a4",
+			"keccak256": "0x76108c3c4ad889100373068fd559f773e95a4224b8097fd0c275efe0546258d4",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c91afa354ec15400d8820ff3f85e408c7f2430625ebf3969afc6832ba939d566",
-				"dweb:/ipfs/QmWJokemh5JkN5v8LYv1QgeouQvBsUoHsYQte3WkjWEa3B"
+				"bzz-raw://bc63dceea8bec6d8acc1efa04c7cf4e47b4553c5c1e67e7cd7b1b52f5e482003",
+				"dweb:/ipfs/QmWCZb98ALxUpSbdryQ5qxanmj8QvGMF1dhso9YxHPTxsx"
 			]
 		},
 		"contracts/interfaces/IDatacapGateway.sol": {

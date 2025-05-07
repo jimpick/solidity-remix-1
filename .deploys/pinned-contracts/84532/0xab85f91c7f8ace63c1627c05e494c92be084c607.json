@@ -1,6 +1,6 @@
 {
   "name": "DatacapGatewayAxelar",
-  "address": "0xd020fa024016cb05d02e976cd3f7135beb9602b9",
+  "address": "0xab85f91c7f8ace63c1627c05e494c92be084c607",
   "abi": [
     {
       "inputs": [
@@ -136,6 +136,24 @@
     {
       "inputs": [
         {
+          "internalType": "string",
+          "name": "destinationChain",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "destinationAddress",
+          "type": "string"
+        }
+      ],
+      "name": "setDestChainAndAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
           "internalType": "address",
           "name": "storageProviderEscrowFactoryAddress",
           "type": "address"
@@ -256,5 +274,5 @@
     }
   ],
   "filePath": "USDC-1/contracts/16_DatacapGatewayAxelar.sol",
-  "pinnedAt": 1746587220816
+  "pinnedAt": 1746590648640
 }
