@@ -316,11 +316,11 @@
 			]
 		},
 		"contracts/18_DatacapGatewayAxelarReceiverMock.sol": {
-			"keccak256": "0x2c3657d7720501aebf05efe7f70c630825aec962254d71cffd26de2622ccaec0",
+			"keccak256": "0x8179f6dd51766ff5f40134965f831eb472a9af45d56c402157390f24f6c4e207",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2fc4a57188946770058a87605226631277e9c602acb04728b622bf03cd3153fe",
-				"dweb:/ipfs/QmTZNagHj5fKGeVsYSQgogqXtcUtEBhE65WpkkP4wDmMjr"
+				"bzz-raw://8198d1bbac06f4bdd24e8de43d6dbe38228c7c1a47df429cab5dfa8bb0be652b",
+				"dweb:/ipfs/QmQGcdspJXd6vXsxKYgayhfyeLaGw3iwqTYbSrp9F5q4Gm"
 			]
 		},
 		"contracts/interfaces/IMockAllocator.sol": {

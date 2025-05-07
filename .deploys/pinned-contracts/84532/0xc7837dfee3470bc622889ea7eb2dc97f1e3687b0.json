@@ -1,6 +1,6 @@
 {
   "name": "DatacapGatewayAxelarReceiverMock",
-  "address": "0x8345c56a0be1156d3d6519191bf9a3771ab5a5b3",
+  "address": "0xc7837dfee3470bc622889ea7eb2dc97f1e3687b0",
   "abi": [
     {
       "inputs": [
@@ -220,5 +220,5 @@
     }
   ],
   "filePath": "USDC-1/contracts/18_DatacapGatewayAxelarReceiverMock.sol",
-  "pinnedAt": 1746590177813
+  "pinnedAt": 1746593496134
 }

@@ -47,12 +47,14 @@ contract DatacapGatewayAxelarReceiverMock is AxelarExecutable {
         sourceChain = _sourceChain;
         sourceAddress = _sourceAddress;
 
+        /*
         if (keccak256(abi.encodePacked(_sourceChain)) == keccak256(abi.encodePacked(authorizedSourceChain))) {
             revert UnauthorizedSourceChain(_sourceChain);
         }
         if (keccak256(abi.encodePacked(_sourceAddress)) == keccak256(abi.encodePacked(authorizedSourceAddress))) {
             revert UnauthorizedSourceChain(_sourceAddress);
         }
+        */
 
         emit Executed(commandId, sourceAddress, clientFilecoinAddress, amount);
 
